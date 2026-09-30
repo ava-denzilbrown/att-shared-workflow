@@ -4,16 +4,16 @@ Reusable GitHub Actions workflows for repositories in an organization.
 
 ## Reusable CI workflow
 
-The `CI` workflow in `.github/workflows/ci.yml` checks out the calling
-repository and runs its validation commands. The commands are provided by the
-caller so this workflow can be used by repositories with different languages
-and build tools.
+The `Shared CI` workflow in `.github/workflows/shared-ci.yml` checks out the
+calling repository and runs its validation commands. The commands are provided
+by the caller so this workflow can be used by repositories with different
+languages and build tools.
 
-Add a caller workflow such as `.github/workflows/ci.yml` to a consuming
+Add a caller workflow such as `.github/workflows/shared-ci.yml` to a consuming
 repository:
 
 ```yaml
-name: CI
+name: Shared CI
 
 on:
   push:
@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   validate:
-    uses: ava-denzilbrown/att-shared-workflow/.github/workflows/ci.yml@v1
+    uses: ava-denzilbrown/att-shared-workflow/.github/workflows/shared-ci.yml@v1
     with:
       commands: |
         npm ci
